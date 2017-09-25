@@ -22,4 +22,3 @@ COPY conf/sqitch.conf /src/schemaverse/schema/
 USER postgres
 RUN cd schemaverse/schema && \
     sqitch deploy db:pg:schemaverse
-
