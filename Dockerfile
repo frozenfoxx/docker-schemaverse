@@ -19,6 +19,6 @@ RUN git clone https://github.com/Abstrct/Schemaverse.git schemaverse
 COPY conf/sqitch.conf /src/schemaverse/schema/
 
 # Deploy Schemaverse
-USER postgres
-RUN cd schemaverse/schema && \
-    sqitch deploy db:pg:schemaverse
+RUN /etc/init.d/postgresql start && \
+    sleep 10 && \
+    su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse'
