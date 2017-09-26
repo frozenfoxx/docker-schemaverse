@@ -29,3 +29,6 @@ RUN /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
     su - postgres -c 'createuser schemaadmin && createdb -O schemaadmin schemaverse' && \
     su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse'
+
+# Expose ports
+EXPOSE 5432
