@@ -29,7 +29,8 @@ COPY scripts/start_schemaverse.sh /src/schemaverse/
 RUN /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
     su - postgres -c 'createuser schemaadmin && createdb -O schemaadmin schemaverse' && \
-    su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse'
+    su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse' && \
+    /etc/init.d/postgresql stop
 
 # Expose ports
 EXPOSE 5432
