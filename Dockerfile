@@ -23,6 +23,7 @@ RUN addgroup --system schemaadmin && \
 WORKDIR /src
 RUN git clone https://github.com/Abstrct/Schemaverse.git schemaverse
 COPY conf/sqitch.conf /src/schemaverse/schema/
+COPY scripts/start_schemaverse.sh /src/schemaverse/
 
 # Deploy Schemaverse
 RUN /etc/init.d/postgresql start && \
@@ -32,3 +33,6 @@ RUN /etc/init.d/postgresql start && \
 
 # Expose ports
 EXPOSE 5432
+
+# Run Schemaverse
+CMD [ "/src/schemaverse/start_schemaverse.sh" ]
