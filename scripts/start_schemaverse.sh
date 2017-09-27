@@ -9,5 +9,8 @@ PORT=5432
 
 # Logic
 
-## Start Database
+## Start database
 /etc/init.d/postgresql start
+
+## Watch log
+tail -f /var/log/postgresql/postgresql-9.5-main.log
