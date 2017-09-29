@@ -16,8 +16,8 @@ RUN apt-get update && \
         postgresql-server-dev-all
 
 # Add the user and groups appropriately
-RUN addgroup --system schemaadmin && \
-    adduser --system --home /src/schemaverse --shell /bin/bash --group schemaadmin
+RUN addgroup --system schemaverse && \
+    adduser --system --home /src/schemaverse --shell /bin/bash --group schemaverse
 
 # Clone down Schemaverse
 WORKDIR /src
@@ -28,7 +28,7 @@ COPY scripts/start_schemaverse.sh /src/schemaverse/
 # Deploy Schemaverse
 RUN /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
-    su - postgres -c 'createuser schemaadmin && createdb -O schemaadmin schemaverse' && \
+    su - postgres -c 'createuser schemaverse && createdb -O schemaverse schemaverse' && \
     su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse' && \
     /etc/init.d/postgresql stop
 
