@@ -10,7 +10,6 @@ ENV PGPORT=5432
 ENV PGHOST=localhost
 ENV PGUSER=schemaverse
 ENV SCHEMAVERSESLEEP=60
-ENV SCHEMAVERSESLEEPTIME=60
 
 # Install packages
 RUN apt-get update && \
