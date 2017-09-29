@@ -40,7 +40,7 @@ RUN sed -i "s/^#listen_addresses.*\=.*'localhost/listen_addresses = '\*/g" /etc/
     echo "host schemaverse +players 0.0.0.0/0 md5" >> /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/pg_hba.conf && \
     /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
-    su - postgres -c 'createuser schemaverse && createdb -O schemaverse schemaverse' && \
+    su - postgres -c 'createuser -s schemaverse && createdb -O schemaverse schemaverse' && \
     su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse' && \
     /etc/init.d/postgresql stop
 
