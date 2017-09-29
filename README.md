@@ -16,8 +16,16 @@ docker build .
 The following will set up, install, and run the latest Schemaverse server.
 
 ```
-docker run -d --name=schemaverse_server \
-  frozenfoxx/docker-schemaverse
+docker run -d -p 5432:5432 --name=schemaverse_server \
+  frozenfoxx/docker-schemaverse:latest
+```
+
+## Interactive
+A good way to run for development and for continual monitoring is to attach to the terminal:
+
+```
+docker run -it -p 5432:5432 --name=schemaverse_server \
+  frozenfoxx/docker-schemaverse:latest
 ```
 
 # Configuration
