@@ -34,6 +34,8 @@ COPY scripts/start_schemaverse.sh /src/schemaverse/
 
 # Deploy Schemaverse
 RUN sed -i "s/^#listen_addresses.*\=.*'localhost/listen_addresses = '\*/g" /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/postgresql.conf && \
+    echo "host schemaverse schemaverse 127.0.0.1/32 trust" >> /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/pg_hba.conf && \
+    echo "host schemaverse schemaverse ::1/128 trust" >> /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/pg_hba.conf && \
     echo "host schemaverse all 0.0.0.0/0 md5" >> /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/pg_hba.conf && \
     /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
