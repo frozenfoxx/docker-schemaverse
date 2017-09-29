@@ -26,7 +26,9 @@ COPY conf/sqitch.conf /src/schemaverse/schema/
 COPY scripts/start_schemaverse.sh /src/schemaverse/
 
 # Deploy Schemaverse
-RUN /etc/init.d/postgresql start && \
+RUN sed -i "s/^#listen_addresses.*\=.*'localhost/listen_addresses = '\*/g" /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/postgresql.conf && \
+    echo "host    all             all             0.0.0.0/0            trust" >> /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/pg_hba.conf && \
+    /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
     su - postgres -c 'createuser schemaverse && createdb -O schemaverse schemaverse' && \
     su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse' && \
