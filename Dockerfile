@@ -47,5 +47,8 @@ RUN sed -i "s/^#listen_addresses.*\=.*'localhost/listen_addresses = '\*/g" /etc/
 # Expose ports
 EXPOSE 5432
 
+# Persistence volume
+VOLUME [ "/var/lib/postgresql" ]
+
 # Run Schemaverse
 CMD [ "/src/schemaverse/start_schemaverse.sh" ]
