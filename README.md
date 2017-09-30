@@ -38,10 +38,10 @@ psql schemaverse
 ```
 
 ## Persistent volume
-This image provides a persistent volume for `/var/lib/postgresql` if desired. If you wish to maintain the volume after the container is destroyed you can override it:
+This image provides a persistent volume for `/var/lib/postgresql` if desired. If you wish to maintain the volume after the container is destroyed simply don't tell Docker to remove it with `--rm`. You can also override it:
 
 ```
-docker run -d --rm -p 5432:5432 -v /some/persistent/path:/var/lib/postgresql --name=schemaverse_server frozenfoxx/docker-schemaverse:latest
+docker run -d -p 5432:5432 -v /some/persistent/path:/var/lib/postgresql --name=schemaverse_server frozenfoxx/docker-schemaverse:latest
 ```
 
 ## Connect to the database
