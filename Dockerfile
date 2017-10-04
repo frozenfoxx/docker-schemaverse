@@ -30,7 +30,7 @@ RUN addgroup --system schemaverse && \
 WORKDIR /src
 RUN git clone https://github.com/Abstrct/Schemaverse.git schemaverse
 COPY conf/sqitch.conf /src/schemaverse/schema/
-COPY scripts/start_schemaverse.sh /src/schemaverse/
+COPY scripts/* /src/schemaverse/scripts/
 
 # Deploy Schemaverse
 RUN sed -i "s/^#listen_addresses.*\=.*'localhost/listen_addresses = '\*/g" /etc/postgresql/$(ls /etc/postgresql/ | sort -r |head -1)/main/postgresql.conf && \
@@ -51,4 +51,4 @@ EXPOSE 5432
 VOLUME [ "/var/lib/postgresql" ]
 
 # Run Schemaverse
-CMD [ "/src/schemaverse/start_schemaverse.sh" ]
+CMD [ "/src/schemaverse/scripts/start_schemaverse.sh" ]
