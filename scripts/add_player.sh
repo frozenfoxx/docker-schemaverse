@@ -18,4 +18,4 @@ if [ $# -lt 2 ]; then
 fi
 
 su schemaverse -c "psql -d schemaverse -c \"INSERT INTO player(username, password, balance, fuel_reserve) \
-  VALUES('${PLAYERNAME}', 'md5'+MD5(${PASSWORD}+${PLAYERNAME}), ${BALANCE}, ${FUELRESERVE});\"
+  VALUES('${PLAYERNAME}', 'md5'+MD5(${PASSWORD}+${PLAYERNAME}), ${BALANCE}, ${FUELRESERVE});\""
