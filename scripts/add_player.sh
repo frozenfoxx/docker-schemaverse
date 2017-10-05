@@ -15,6 +15,7 @@ if [ $# -lt 2 ]; then
   echo "Not enough arguments"
   echo "Usage: add_player.sh [USERNAME] [PASSWORD] [BALANCE] [FUEL RESERVE]"
   echo "  Note: only username and password are required"
+  exit 1
 fi
 
 su schemaverse -c "psql -d schemaverse -c \"INSERT INTO player(username, password, balance, fuel_reserve) \
