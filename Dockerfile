@@ -20,7 +20,8 @@ RUN apt-get update && \
         perl \
         postgresql \
         postgresql-client \
-        postgresql-server-dev-all
+        postgresql-server-dev-all && \
+        rm -rf /var/lib/apt/lists/*
 
 # Add the user and groups appropriately
 RUN addgroup --system schemaverse && \
