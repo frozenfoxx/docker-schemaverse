@@ -42,7 +42,7 @@ RUN sed -i "s/^#listen_addresses.*\=.*'localhost/listen_addresses = '\*/g" /etc/
     /etc/init.d/postgresql start && \
     cpan App::Sqitch DBD::Pg && \
     su - postgres -c 'createuser -s schemaverse && createdb -O schemaverse schemaverse' && \
-    su - postgres -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse' && \
+    su - schemaverse -c 'cd /src/schemaverse/schema && sqitch deploy db:pg:schemaverse' && \
     /etc/init.d/postgresql stop
 
 # Expose ports
