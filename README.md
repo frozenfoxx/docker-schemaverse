@@ -56,7 +56,7 @@ Adding a player is very similar to administering the database. A script has been
 ```
 docker ps
 [note container id of the docker-schemaverse container]
-docker exec [container id] /src/schemaverse/scripts/add_player.sh [player name] [password]
+docker exec -it [container id] /src/schemaverse/scripts/add_player.sh [player name] [password]
 ```
 
 # Configuration
