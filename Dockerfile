@@ -5,11 +5,11 @@ FROM ubuntu:16.04
 LABEL maintainer="FrozenFOXX <siliconfoxx@gmail.com>"
 
 # Variables
-ENV PGDATABASE=schemaverse
-ENV PGPORT=5432
-ENV PGHOST=localhost
-ENV PGUSER=schemaverse
-ENV SCHEMAVERSESLEEP=60
+ENV PGDATABASE=schemaverse \
+  PGPORT=5432 \
+  PGHOST=localhost \
+  PGUSER=schemaverse \
+  SCHEMAVERSESLEEP=60
 
 # Install packages
 RUN apt-get update && \
