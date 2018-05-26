@@ -2,7 +2,7 @@
 FROM ubuntu:16.04
 
 # Information
-LABEL maintainer="FrozenFOXX <siliconfoxx@gmail.com>"
+LABEL maintainer="FrozenFOXX <frozenfoxx@churchoffoxx.net>"
 
 # Variables
 ENV PGDATABASE=schemaverse \
