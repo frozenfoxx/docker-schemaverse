@@ -1,11 +1,12 @@
 # Base image
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # Information
 LABEL maintainer="FrozenFOXX <frozenfoxx@churchoffoxx.net>"
 
 # Variables
-ENV PGDATABASE=schemaverse \
+ENV DEBIAN_FRONTEND=noninteractive \
+  PGDATABASE=schemaverse \
   PGPORT=5432 \
   PGHOST=localhost \
   PGUSER=schemaverse \
