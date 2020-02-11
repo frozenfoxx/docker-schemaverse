@@ -1,10 +1,11 @@
 # docker-schemaverse
-Docker container for running Schemaverse
-[Schemaverse](https://schemaverse.com/) for [Docker](https://www.docker.com).
+
+[Docker](https://www.docker.com) container for running [Schemaverse](https://schemaverse.com/). 
 
 Docker Hub: [https://hub.docker.com/r/frozenfoxx/schemaverse/](https://hub.docker.com/r/frozenfoxx/schemaverse/)
 
 # How to Build
+
 ```
 git clone git@github.com:frozenfoxx/docker-schemaverse.git
 cd docker-schemaverse
@@ -12,7 +13,9 @@ docker build .
 ```
 
 # How to Use this Image
+
 ## Quickstart
+
 The following will run the latest Schemaverse server.
 
 ```
@@ -20,6 +23,7 @@ docker run -d --rm -p 5432:5432 --name=schemaverse_server frozenfoxx/schemaverse
 ```
 
 ## Interactive
+
 A good way to run for development and for continual monitoring is to attach to the terminal:
 
 ```
@@ -27,6 +31,7 @@ docker run -it --rm -p 5432:5432 --name=schemaverse_server frozenfoxx/schemavers
 ```
 
 ## Persistent volume
+
 This image provides a persistent volume for `/var/lib/postgresql` if desired. If you wish to maintain the volume after the container is destroyed simply don't tell Docker to remove it with `--rm`. You can also override it:
 
 ```
@@ -41,6 +46,7 @@ psql -U [some player] -h localhost schemaverse
 ```
 
 # Administration
+
 Administering the database must be done from within the container. After starting the container you can perform the following to attach to its terminal and access the database:
 
 ```
@@ -51,6 +57,7 @@ su schemaverse -c "psql schemaverse"
 ```
 
 ## Add a Player
+
 Adding a player is very similar to administering the database. A script has been included to make this easier, `add_player.sh`. Invoke it as such:
 
 ```
@@ -60,5 +67,7 @@ docker exec -it [container id] /src/schemaverse/scripts/add_player.sh [player na
 ```
 
 # Configuration
+
 ## sqitch.conf
+
 The primary configuration is handled in `conf/sqitch.conf`. Update this file prior to building to alter deployment.
