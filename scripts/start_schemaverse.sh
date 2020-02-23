@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-####################################################
-# Author: FrozenFOXX
-# Description: this script launches the Schemaverse
-####################################################
+
+# launch the Schemaverse
 
 # Variables
 PORT=5432
@@ -16,4 +14,4 @@ PORT=5432
 su schemaverse -c '/src/schemaverse/tic.pl | tee /src/schemaverse/tic.log 2>&1 &'
 
 ## Watch log
-tail -f /var/log/postgresql/postgresql-9.5-main.log
+tail -f /var/log/postgresql/postgresql-*.log
