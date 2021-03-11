@@ -1,5 +1,7 @@
 # docker-schemaverse
 
+[![Build Status](https://cloud.drone.io/api/badges/frozenfoxx/docker-schemaverse/status.svg?ref=refs/heads/main)](https://cloud.drone.io/frozenfoxx/docker-schemaverse)
+
 [Docker](https://www.docker.com) container for running [Schemaverse](https://schemaverse.com/). 
 
 Docker Hub: [https://hub.docker.com/r/frozenfoxx/schemaverse/](https://hub.docker.com/r/frozenfoxx/schemaverse/)
