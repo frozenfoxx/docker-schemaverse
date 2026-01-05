@@ -1,11 +1,19 @@
 # Base image
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
 # Information
-LABEL maintainer="FrozenFOXX <frozenfoxx@churchoffoxx.net>"
+LABEL maintainer="FrozenFOXX <frozenfoxx@cultoffoxx.net>"
 
 # Variables
-ENV DEBIAN_FRONTEND=noninteractive \
+ENV APP_DEPS=" \
+    postgresql \
+    postgresql-client" \
+  BUILD_DEPS=" \
+    build-essential \
+    git \
+    perl \
+    postgresql-server-dev-all" \
+  DEBIAN_FRONTEND=noninteractive \
   PGDATABASE=schemaverse \
   PGPORT=5432 \
   PGHOST=localhost \
@@ -13,16 +21,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
   SCHEMAVERSESLEEP=60
 
 # Install packages
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
-        build-essential \
-        git \
-        perl \
-        postgresql \
-        postgresql-client \
-        postgresql-server-dev-all && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y ${APP_DEPS} ${BUILD_DEPS} \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Add the user and groups appropriately
 RUN addgroup --system schemaverse && \
