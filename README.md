@@ -24,6 +24,26 @@ The following will run the latest Schemaverse server.
 docker run -d --rm -p 5432:5432 --name=schemaverse_server frozenfoxx/schemaverse:latest
 ```
 
+## Docker Compose
+
+Alternatively, you can use Docker Compose to run the Schemaverse server with persistent data:
+
+```
+docker compose up -d
+```
+
+To stop the server while preserving data:
+
+```
+docker compose down
+```
+
+To stop the server and remove all data:
+
+```
+docker compose down -v
+```
+
 ## Interactive
 
 A good way to run for development and for continual monitoring is to attach to the terminal:

@@ -1,0 +1,19 @@
+services:
+  schemaverse:
+    build: .
+    image: frozenfoxx/schemaverse:latest
+    container_name: schemaverse_server
+    ports:
+      - "5432:5432"
+    environment:
+      - PGDATABASE=schemaverse
+      - PGPORT=5432
+      - PGHOST=localhost
+      - PGUSER=schemaverse
+      - SCHEMAVERSESLEEP=60
+    volumes:
+      - schemaverse_data:/var/lib/postgresql
+    restart: unless-stopped
+
+volumes:
+  schemaverse_data:
